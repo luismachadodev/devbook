@@ -7,7 +7,6 @@ import (
 	"api/src/respostas"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"strconv"
 	"strings"
@@ -109,7 +108,7 @@ func AtualizarUsuario(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	corpoRequisicao, erro := ioutil.ReadAll(r.Body)
+	corpoRequisicao, erro := io.ReadAll(r.Body)
 	if erro != nil {
 		respostas.Erro(w, http.StatusUnprocessableEntity, erro)
 		return
